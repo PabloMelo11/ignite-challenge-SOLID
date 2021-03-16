@@ -39,7 +39,7 @@
         },
         "responses": {
           "201": {
-            "description": "Operacao realizada com sucesso",
+            "description": "Operação realizada com sucesso",
             "content": {
               "application/json": {
                 "schema": {
@@ -158,6 +158,79 @@
                     "error": {
                       "type": "string",
                       "example": "You need to be an administrator to list all users."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "description": "Return a specific user",
+        "summary": "Return a specific user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "055f41e2-3cb5-46b1-9547-2965b07a258c"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Pablo"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "pablomelodev@gmail.com"
+                    },
+                    "admin": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-03-15T22:59:11.815Z"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "example": "2021-03-15T22:59:11.815Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "User not found."
                     }
                   }
                 }
